@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { handler } = require("C:\\Users\\margh\\Desktop\\Telegram_Bot\\controller\\library\\index.js");
+const { handler } = require("../controller/library/index.js");
 const app = express();
 const port = 4040;
 
