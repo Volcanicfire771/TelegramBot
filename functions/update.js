@@ -1,25 +1,7 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const { handler } = require("../controller/library/index");
-const app = express();
-const port = 4040;
+const sendMessage = require("../sendmessage");
 
-
-
-// app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-
-// Set up home route
-app.get("/", async (req, res) => {
-	res.send(await handler(req));
-});
-// Set up second page
-app.post("/", async (req, res) => {
-	// console.log(req.body.message);
-    res.send(await handler(req));
-    
-});
-
-app.listen(port, () => {
-	console.log(`Success! Your application is running on port ${port}.`);
-});
+exports.handler = async (event) => {
+  const { message } = JSON.parse(event.body);
+  await sendMessage(message.chat.id, "I got your message!");
+  return { statusCode: 200 };
+};
