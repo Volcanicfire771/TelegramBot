@@ -1,28 +1,25 @@
-const axios = require("axios");
-const MY_TOKEN = "7338554015:AAFdI_REkVhWC9OGLYHeNCWqAwJbbp-O-F4";
-const BASE_URL = `https://api.telegram.org/bot${MY_TOKEN}`;
-
-function getAxiosInstance(){
-    return{
-        get(method, params){
-            return axios.get(`/${method}`, {
-                baseURL: BASE_URL,
-                params,
-            });
-            
-        },
+const express = require("express");
+const bodyParser = require("body-parser");
+const { handler } = require("C:\\Users\\margh\\Desktop\\Telegram_Bot\\controller\\library\\index.js");
+const app = express();
+const port = 4040;
 
 
-        post(method, data){
-            return axios({
-                method: "post",
-                baseURL: BASE_URL,
-                url:`/${method}`,
-                data,
-            });
-            
-        },
-    };
-}
 
-module.exports = { axiosInstance: getAxiosInstance() };
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Set up home route
+app.get("/", async (req, res) => {
+	res.send(await handler(req));
+});
+// Set up second page
+app.post("/", async (req, res) => {
+	// console.log(req.body.message);
+    res.send(await handler(req));
+    
+});
+
+app.listen(port, () => {
+	console.log(`Success! Your application is running on port ${port}.`);
+});
