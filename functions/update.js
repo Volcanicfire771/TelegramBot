@@ -1,18 +1,29 @@
 const sendMessage = require("../sendmessage");
-
+const { scrapeMovies } = require("../features/movie_scraper/index.js")
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
-  console.log(message);
-  console.log(message.text);
+  let text = message.text;
+  const chatID = message.chat.id;
 
-    if (message == "/start" || message.text == "/start"){
-        await sendMessage(message.chat.id, "Ezayak");
+//   console.log(message);
+//   console.log(message.text);
+    
+    if(text.charAt(0) === "/"){
 
+        const command = text.substr(1);
+        
+        switch (command){
+            case "start":
+                await sendMessage(chatID, "Starting");
+            case "anime":
+                const movieData = await scrapeMovies();
+                await sendMessage(chatID, `Anime Movies currently available in Egyptian theatres are: \n${movieData}`);
+            default:
+                await sendMessage(chatID, `Command Unknown.`)
+        }
+    }else{
+        await sendMessage(chatID, text);
     }
-else{
-    await sendMessage(message.chat.id, "I got your message!");
-
-}
   return { statusCode: 200 };
 };
