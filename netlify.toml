@@ -1,0 +1,3 @@
+[build]
+  functions = "functions"  # Output folder for built functions
+  publish = "public"

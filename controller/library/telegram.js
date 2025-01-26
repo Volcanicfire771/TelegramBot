@@ -1,5 +1,5 @@
-const { axiosInstance } = require("C:\\Users\\margh\\Desktop\\Telegram_Bot\\controller\\library\\axios.js");
-const { scrapeMovies } = require("../../features/movie_scraper/index.js")
+const { axiosInstance } = require("./axios.js");
+const { scrapeMovies } = require("../features/movie_scraper/index.js")
 
 
 
