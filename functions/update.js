@@ -16,11 +16,14 @@ exports.handler = async (event) => {
         switch (command){
             case "start":
                 await sendMessage(chatID, "Starting");
+                break;
             case "anime":
                 const movieData = await scrapeMovies();
                 await sendMessage(chatID, `Anime Movies currently available in Egyptian theatres are: \n${movieData}`);
+                break;
             default:
                 await sendMessage(chatID, `Command Unknown.`)
+                break;
         }
     }else{
         await sendMessage(chatID, text);
