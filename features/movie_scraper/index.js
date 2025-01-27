@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 //https://elcinema.com/en/now/eg?utf8=%E2%9C%93&experience=&language=ja&censorship=&genre=3&order=release_date
-const url = filter_types();
+
 //https://elcinema.com/en/now/
 
 async function getHTML(type) {
@@ -36,18 +36,17 @@ function filter_types(type){
     
         
         if(type == 1){
-            let url = "https://elcinema.com/en/now/";   
+            return "https://elcinema.com/en/now/";   
         }
         else if(type == 2){
-            let url = "https://elcinema.com/en/soon/";
+            return "https://elcinema.com/en/soon/";
         }
         else if(type == 13){
-            let url = "https://elcinema.com/en/now/eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date";   
+            return "https://elcinema.com/en/now/eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date";   
         }
         else if(type == 23){
-            let url = "https://elcinema.com/en/soon/eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date";   
+            return "https://elcinema.com/en/soon/eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date";   
         }
-    return url;
 }
 
 
