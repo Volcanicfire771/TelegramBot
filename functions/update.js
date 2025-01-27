@@ -20,16 +20,32 @@ exports.handler = async (event) => {
                 break;
             case "current_movies":
                 movieData = await scrapeMovies(1);
-                await sendMessage(chatID,`Movies currently airing are: \n${movieData}`);
+                str = "Movies currently airing are: \n";
+                for(let i = 0; i < movieData.length; i++){
+                    str.append(`${movieData[i]}\n`);
+                }
+                await sendMessage(chatID,str);
             case "soon_movies":
                 movieData = await scrapeMovies(2);
-                await sendMessage(chatID,`Movies will aire soon are: \n${movieData}`);
+                str = "Movies will aire soon are: \n";
+                for(let i = 0; i < movieData.length; i++){
+                    str.append(`${movieData[i]}\n`);
+                }
+                await sendMessage(chatID,str);
             case "animenow":
                 movieData = await scrapeMovies(13);
-                await sendMessage(chatID,`Anime Movies currently airing are: \n${movieData}`);
+                str = "Anime Movies currently airing are: \n";
+                for(let i = 0; i < movieData.length; i++){
+                    str.append(`${movieData[i]}\n`);
+                }
+                await sendMessage(chatID,`${movieData}`);
             case "animesoon":
                 movieData = await scrapeMovies(23);
-                await sendMessage(chatID,`Anime Movies that will aire soon are: \n${movieData}`);
+                str = "Anime Movies that will aire soon are: \n";
+                for(let i = 0; i < movieData.length; i++){
+                    str.append(`${movieData[i]}\n`);
+                }
+                await sendMessage(chatID,str);
             default:
                 await sendMessage(chatID, `Command Unknown.`)
                 break;
