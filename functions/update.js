@@ -25,6 +25,7 @@ exports.handler = async (event) => {
                     str += `${movieData[i]}\n`;
                 }
                 await sendMessage(chatID,str);
+                break;
             case "soon_movies":
                 movieData = await scrapeMovies(2);
                 str = "Movies will aire soon are: \n";
@@ -32,6 +33,7 @@ exports.handler = async (event) => {
                     str += `${movieData[i]}\n`;
                 }
                 await sendMessage(chatID,str);
+                break;
             case "animenow":
                 movieData = await scrapeMovies(13);
                 str = "Anime Movies currently airing are: \n";
@@ -46,6 +48,7 @@ exports.handler = async (event) => {
                     str += `${movieData[i]}\n`;
                 }
                 await sendMessage(chatID,str);
+                break;
             default:
                 await sendMessage(chatID, `Command Unknown.`)
                 break;
