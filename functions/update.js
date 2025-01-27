@@ -23,13 +23,13 @@ exports.handler = async (event) => {
                 await sendMessage(chatID,`Movies currently airing are: \n${movieData}`);
             case "soon_movies":
                 movieData = await scrapeMovies(2);
-                await sendMessage(chatID,`Movies currently airing are: \n${movieData}`);
+                await sendMessage(chatID,`Movies will aire soon are: \n${movieData}`);
             case "animenow":
                 movieData = await scrapeMovies(13);
-                await sendMessage(chatID,`Movies currently airing are: \n${movieData}`);
+                await sendMessage(chatID,`Anime Movies currently airing are: \n${movieData}`);
             case "animesoon":
                 movieData = await scrapeMovies(23);
-                await sendMessage(chatID,`Movies currently airing are: \n${movieData}`);
+                await sendMessage(chatID,`Anime Movies that will aire soon are: \n${movieData}`);
             default:
                 await sendMessage(chatID, `Command Unknown.`)
                 break;
