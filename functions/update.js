@@ -18,11 +18,6 @@ exports.handler = async (event) => {
             case "start":
                 await sendMessage(chatID, "Starting");
                 break;
-            case "anime":
-                let movieData = await scrapeMovies();
-                await sendMessage(chatID, `Anime Movies currently available in Egyptian theatres are: \n${movieData}`);
-                break;
-            
             case "current_movies":
                 movieData = await scrapeMovies(1);
                 await sendMessage(chatID,`Movies currently airing are: \n${movieData}`);
