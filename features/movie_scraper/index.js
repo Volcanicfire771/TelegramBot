@@ -4,7 +4,8 @@ const cheerio = require('cheerio');
 const url = filter_types();
 //https://elcinema.com/en/now/
 
-async function getHTML() {
+async function getHTML(type) {
+    const url = filter_types(type);
     const {data: html} = await axios.get(url, {
         headers: {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36"
@@ -14,8 +15,8 @@ async function getHTML() {
     return html;
 }
 
-async function scrapeMovies() {
-    const res = await getHTML();
+async function scrapeMovies(type) {
+    const res = await getHTML(type);
     let movieData = [];
 
     const $ = cheerio.load(res);
@@ -31,28 +32,26 @@ async function scrapeMovies() {
     return movieData;
 }
 
-function filter_types(msg){
-    if(msg.includes("movies") === true){
+function filter_types(type){
+    
         
-        
-
-
-        if(msg.includes("currently available")){
-            let url = "https://elcinema.com/en/now/";
+        if(type == 1){
+            let url = "https://elcinema.com/en/now/";   
         }
-        else if(msg.includes("coming soon")){
+        else if(type == 2){
             let url = "https://elcinema.com/en/soon/";
         }
-
-        if(msg.includes("anime")){
-            url.append("eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date") 
+        else if(type == 13){
+            let url = "https://elcinema.com/en/now/eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date";   
         }
-}
+        else if(type == 23){
+            let url = "https://elcinema.com/en/soon/eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date";   
+        }
     return url;
 }
 
 
 
-
+module.exports = { filter_types }
 
 module.exports = { scrapeMovies }
