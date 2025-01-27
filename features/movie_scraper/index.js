@@ -1,8 +1,8 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-
-const url = 'https://elcinema.com/en/now/eg?utf8=%E2%9C%93&experience=&language=ja&censorship=&genre=3&order=release_date';
-
+//https://elcinema.com/en/now/eg?utf8=%E2%9C%93&experience=&language=ja&censorship=&genre=3&order=release_date
+const url = filter_types();
+//https://elcinema.com/en/now/
 
 async function getHTML() {
     const {data: html} = await axios.get(url, {
@@ -29,6 +29,26 @@ async function scrapeMovies() {
 
     // console.log(movieData);
     return movieData;
+}
+
+function filter_types(msg){
+    if(msg.includes("movies") === true){
+        
+        
+
+
+        if(msg.includes("currently available")){
+            let url = "https://elcinema.com/en/now/";
+        }
+        else if(msg.includes("coming soon")){
+            let url = "https://elcinema.com/en/soon/";
+        }
+
+        if(msg.includes("anime")){
+            url.append("eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date") 
+        }
+}
+    return url;
 }
 
 
