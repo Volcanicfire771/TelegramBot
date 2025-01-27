@@ -22,28 +22,28 @@ exports.handler = async (event) => {
                 movieData = await scrapeMovies(1);
                 str = "Movies currently airing are: \n";
                 for(let i = 0; i < movieData.length; i++){
-                    str.append(`${movieData[i]}\n`);
+                    str += `${movieData[i]}\n`;
                 }
                 await sendMessage(chatID,str);
             case "soon_movies":
                 movieData = await scrapeMovies(2);
                 str = "Movies will aire soon are: \n";
                 for(let i = 0; i < movieData.length; i++){
-                    str.append(`${movieData[i]}\n`);
+                    str += `${movieData[i]}\n`;
                 }
                 await sendMessage(chatID,str);
             case "animenow":
                 movieData = await scrapeMovies(13);
                 str = "Anime Movies currently airing are: \n";
                 for(let i = 0; i < movieData.length; i++){
-                    str.append(`${movieData[i]}\n`);
+                    str += `${movieData[i]}\n`;
                 }
                 await sendMessage(chatID,`${movieData}`);
             case "animesoon":
                 movieData = await scrapeMovies(23);
                 str = "Anime Movies that will aire soon are: \n";
                 for(let i = 0; i < movieData.length; i++){
-                    str.append(`${movieData[i]}\n`);
+                    str += `${movieData[i]}\n`;
                 }
                 await sendMessage(chatID,str);
             default:
