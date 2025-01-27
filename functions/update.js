@@ -51,7 +51,9 @@ exports.handler = async (event) => {
                 break;
 
             case "commandlist":
-                str = "Commands are:\n-current_movies --> displays movies currently airing in Egyptain theatres.\n-soon_movies --> displays movies that will aire soon.\n-animenow --> Displays anime movies that are currently airing.\n-animesoon --> Displays anime movies that will aire in soon."
+                str = "Commands are:\n-current_movies --> displays movies currently airing in Egyptain theatres.\n-soon_movies --> displays movies that will aire soon.\n-animenow --> Displays anime movies that are currently airing.\n-animesoon --> Displays anime movies that will aire in soon.";
+                await sendMessage(chatID,str);
+                break;
             default:
                 await sendMessage(chatID, `Command Unknown.`)
                 break;
