@@ -52,7 +52,11 @@ exports.handler = async (event) => {
       //     break;
       case "check":
         // Run the comparison immediately
-        await compareMovies();
+       msg = await compareMovies();
+       await sendMessage(
+        chatID,
+        msg
+      );
         await sendMessage(
           chatID,
           "Initial check complete. Automatic checking scheduled every 24 hours."
@@ -62,7 +66,11 @@ exports.handler = async (event) => {
         if (!checkIntervalId) {
           checkIntervalId = setInterval(async () => {
             try {
-              await compareMovies();
+              msg = await compareMovies();
+              await sendMessage(
+                chatID,
+                msg
+              );
               await sendMessage(chatID, "24-hour scheduled check complete.");
             } catch (err) {
               console.error("Error during scheduled movie check:", err);
@@ -82,5 +90,8 @@ exports.handler = async (event) => {
   } else {
     await sendMessage(chatID, text);
   }
+  setInterval(async () => {
+   sendMessage(chatID,"Ahmed ya mohsen");
+  }, 6000);
   return { statusCode: 200 };
 };
