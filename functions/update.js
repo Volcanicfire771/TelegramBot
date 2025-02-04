@@ -10,6 +10,7 @@ exports.handler = async (event) => {
 
   console.log(message);
   console.log(message.text);
+  let checkIntervalId = null;
 
   if (text.charAt(0) === "/") {
     const command = text.substr(1);
