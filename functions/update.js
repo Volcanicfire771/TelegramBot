@@ -1,7 +1,9 @@
 const sendMessage = require("../sendmessage");
 const { scrapeMovies } = require("../features/movie_scraper/index.js");
 const { filter_types } = require("../features/movie_scraper/index.js");
+let ahmed = scrapeMovies("https://elcinema.com/en/now/");
 
+console.log(ahmed);
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
