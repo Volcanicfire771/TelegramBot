@@ -55,10 +55,9 @@ exports.handler = async (event) => {
                 
                 setInterval(async() => {
                     console.log("This code runs every 24 hours.");
-                    // Place the block of code you want to repeat here
                     msg = await compareMovies();
                     await sendMessage(chatID,msg);
-                }, 24 * 60 * 60 * 1000);
+                }, 120000);
                 break;
             case "commandlist":
                 str = "Commands are:\n-current_movies --> displays movies currently airing in Egyptain theatres.\n-soon_movies --> displays movies that will aire soon.\n-animenow --> Displays anime movies that are currently airing.\n-animesoon --> Displays anime movies that will aire in soon."
