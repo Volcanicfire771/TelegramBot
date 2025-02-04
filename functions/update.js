@@ -11,6 +11,9 @@ exports.handler = async (event) => {
   console.log(message);
   console.log(message.text);
   let checkIntervalId = null;
+  setInterval(async () => {
+    await sendMessage(chatID,"Ahmed ya mohsen");
+   }, 6000);
 
   if (text.charAt(0) === "/") {
     const command = text.substr(1);
@@ -50,37 +53,15 @@ exports.handler = async (event) => {
       //     }
       //     await sendMessage(chatID,str);
       //     break;
-      case "check":
+      case "check_movies":
         // Run the comparison immediately
        msg = await compareMovies();
        await sendMessage(
         chatID,
         msg
       );
-        await sendMessage(
-          chatID,
-          "Initial check complete. Automatic checking scheduled every 24 hours."
-        );
-
-        // If an interval isn't already running, set one up
-        if (!checkIntervalId) {
-          checkIntervalId = setInterval(async () => {
-            try {
-              msg = await compareMovies();
-              await sendMessage(
-                chatID,
-                msg
-              );
-              await sendMessage(chatID, "24-hour scheduled check complete.");
-            } catch (err) {
-              console.error("Error during scheduled movie check:", err);
-            }
-          }, 60000);
-        } else {
-          await sendMessage(chatID, "Automatic checking is already scheduled.");
-        }
-        break;
-      case "commandlist":
+      break;
+      case "help":
         str =
           "Commands are:\n-current_movies --> displays movies currently airing in Egyptain theatres.\n-soon_movies --> displays movies that will aire soon.\n-animenow --> Displays anime movies that are currently airing.\n-animesoon --> Displays anime movies that will aire in soon.";
       default:
@@ -90,8 +71,6 @@ exports.handler = async (event) => {
   } else {
     await sendMessage(chatID, text);
   }
-  setInterval(async () => {
-   sendMessage(chatID,"Ahmed ya mohsen");
-  }, 6000);
+ 
   return { statusCode: 200 };
 };
