@@ -34,21 +34,21 @@ exports.handler = async (event) => {
                 }
                 await sendMessage(chatID,str);
                 break;
-            case "animenow":
-                movieData = await scrapeMovies(13);
-                str = "Anime Movies currently airing are: \n";
-                for(let i = 0; i < movieData.length; i++){
-                    str += `${movieData[i]}\n`;
-                }
-                await sendMessage(chatID,`${movieData}`);
-            case "animesoon":
-                movieData = await scrapeMovies(23);
-                str = "Anime Movies that will aire soon are: \n";
-                for(let i = 0; i < movieData.length; i++){
-                    str += `${movieData[i]}\n`;
-                }
-                await sendMessage(chatID,str);
-                break;
+            // case "animenow":
+            //     movieData = await scrapeMovies(13);
+            //     str = "Anime Movies currently airing are: \n";
+            //     for(let i = 0; i < movieData.length; i++){
+            //         str += `${movieData[i]}\n`;
+            //     }
+            //     await sendMessage(chatID,`${movieData}`);
+            // case "animesoon":
+            //     movieData = await scrapeMovies(23);
+            //     str = "Anime Movies that will aire soon are: \n";
+            //     for(let i = 0; i < movieData.length; i++){
+            //         str += `${movieData[i]}\n`;
+            //     }
+            //     await sendMessage(chatID,str);
+            //     break;
 
             case "commandlist":
                 str = "Commands are:\n-current_movies --> displays movies currently airing in Egyptain theatres.\n-soon_movies --> displays movies that will aire soon.\n-animenow --> Displays anime movies that are currently airing.\n-animesoon --> Displays anime movies that will aire in soon."
