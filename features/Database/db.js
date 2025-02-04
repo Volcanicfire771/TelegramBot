@@ -39,7 +39,7 @@ const compareMovies = async () => {
 
         if (removedMovies.length > 0) console.log("Removed Movies:", removedMovies);
         if (addedMovies.length > 0) console.log("New Movies Added:", addedMovies);
-        if(removedMovies.length < 0 && addedMovies.length < 0) console.log("No New Movies");
+        if(removedMovies.length == 0 && addedMovies.length == 0) console.log("No New Movies");
 
         // Save updated movies list
         await saveMovies(newMovies);
