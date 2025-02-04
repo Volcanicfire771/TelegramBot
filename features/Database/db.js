@@ -37,15 +37,16 @@ const compareMovies = async () => {
         let removedMovies = oldMovies.filter(movie => !newMovies.includes(movie));
         let addedMovies = newMovies.filter(movie => !oldMovies.includes(movie));
 
-        if (removedMovies.length > 0) console.log("Removed Movies:", removedMovies);
-        if (addedMovies.length > 0) console.log("New Movies Added:", addedMovies);
-        if(removedMovies.length == 0 && addedMovies.length == 0) console.log("No New Movies");
+        if (removedMovies.length > 0) return `Removed Movies: ${removedMovies}`;
+        if (addedMovies.length > 0) return `Added Movies: ${addedMovies}`;
+        if(removedMovies.length == 0 && addedMovies.length == 0) return "No New Movies";
 
         // Save updated movies list
         await saveMovies(newMovies);
     } catch (error) {
         console.error("Error comparing movies:", error);
     }
+    return "Done";
 };
 
 // Run the comparison function
