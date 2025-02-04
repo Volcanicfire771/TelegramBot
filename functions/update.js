@@ -1,7 +1,7 @@
 const sendMessage = require("../sendmessage");
 const { scrapeMovies } = require("../features/movie_scraper/index.js");
 const { filter_types } = require("../features/movie_scraper/index.js");
-const { compare } = require("../features/Database/sql.js");
+const { compareMovies } = require("../features/Database/db.js");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
@@ -52,7 +52,7 @@ exports.handler = async (event) => {
             //     break;
             case "check":
                 str = "Checking new movies";
-                compare();
+                compareMovies();
             case "commandlist":
                 str = "Commands are:\n-current_movies --> displays movies currently airing in Egyptain theatres.\n-soon_movies --> displays movies that will aire soon.\n-animenow --> Displays anime movies that are currently airing.\n-animesoon --> Displays anime movies that will aire in soon."
             default:
