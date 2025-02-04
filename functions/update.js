@@ -7,8 +7,8 @@ exports.handler = async (event) => {
   let text = message.text;
   const chatID = message.chat.id;
 
-//   console.log(message);
-//   console.log(message.text);
+  console.log(message);
+  console.log(message.text);
     
     if(text.charAt(0) === "/"){
 
@@ -60,4 +60,5 @@ exports.handler = async (event) => {
         await sendMessage(chatID, text);
     }
   return { statusCode: 200 };
+
 };
