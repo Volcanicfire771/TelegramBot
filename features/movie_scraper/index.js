@@ -36,10 +36,10 @@ function filter_types(type){
     
         
         if(type == 1){
-            return "https://egy.voxcinemas.com/movies/whatson";   
+            return "https://elcinema.com/en/now/";   
         }
         else if(type == 2){
-            return "https://egy.voxcinemas.com/movies/comingsoon";
+            return "https://elcinema.com/en/soon/";
         }
         else if(type == 13){
             return "https://elcinema.com/en/now/eg?utf8=✓&experience=&language=ja&censorship=&genre=&order=release_date";   
