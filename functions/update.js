@@ -8,13 +8,8 @@ exports.handler = async (event) => {
   let text = message.text;
   const chatID = message.chat.id;
 
-  console.log(message);
-  console.log(message.text);
-  let checkIntervalId = null;
-  setInterval(async () => {
-    await sendMessage(chatID,"Ahmed ya mohsen");
-   }, 6000);
-
+  // console.log(message);
+  // console.log(message.text);
   if (text.charAt(0) === "/") {
     const command = text.substr(1);
 
