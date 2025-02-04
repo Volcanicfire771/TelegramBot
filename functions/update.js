@@ -1,9 +1,6 @@
 const sendMessage = require("../sendmessage");
 const { scrapeMovies } = require("../features/movie_scraper/index.js");
 const { filter_types } = require("../features/movie_scraper/index.js");
-// let ahmed = scrapeMovies("https://elcinema.com/en/now/");
-
-// console.log(ahmed);
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
@@ -52,6 +49,9 @@ exports.handler = async (event) => {
                 }
                 await sendMessage(chatID,str);
                 break;
+
+            case "commandlist":
+                str = "Commands are:\n-current_movies --> displays movies currently airing in Egyptain theatres.\n-soon_movies --> displays movies that will aire soon.\n-animenow --> Displays anime movies that are currently airing.\n-animesoon --> Displays anime movies that will aire in soon."
             default:
                 await sendMessage(chatID, `Command Unknown.`)
                 break;
